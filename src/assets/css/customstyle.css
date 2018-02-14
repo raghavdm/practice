@@ -1,0 +1,72 @@
+body {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+button.btn {
+  padding-bottom: 4px;
+}
+
+.customBox .box-header {
+  margin-top: 0px;
+}
+
+.form-material .form-control.showBorder {
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+
+.form-material .form-control.showBorder:focus {
+  background: none;
+}
+
+
+/* .table > tbody > tr > td {
+  vertical-align: middle !important;
+} */
+
+.td-border {
+  border: #ddd solid;
+  border-width: 0px 1px 0px 1px;
+}
+
+.table-borderless td {
+  border: 0px !important;
+}
+
+dialog-date-panel .footer {
+  left: 0px !important;
+}
+
+.picker-box {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.cursorPoint {
+  cursor: pointer;
+}
+
+.btn-color {
+  color: #000 !important;
+  background-color: #fabb3d !important;
+  border-color: #efb032 !important;
+}
+
+#side-menu>li>a.active {
+  background-color: #F0F0F0;
+}
+
+#side-menu>li>a.active {
+  border-left: medium none !important;
+  border-right: 5px solid #fabb3d !important;
+  ;
+}
+
+#side-menu>li>a.active i {
+  color: #fabb3d !important;
+}
+
+.bg-title h4,
+.order-page-wrapper h3 {
+  color: #e24c19;
+  font-size: 30px;
+}
