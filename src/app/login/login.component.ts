@@ -3,7 +3,7 @@ import { CustomValidators } from 'ng2-validation';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
-// import { AppService } from '../app.service';
+import { AppService } from '../app.service';
 
 @Component({
     selector: 'app-login',
@@ -13,12 +13,11 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class LoginComponent implements OnInit {
     public submitted = false;
     public loginForm: FormGroup;
-    // protected appSer: AppService, 
-    constructor(public fb: FormBuilder, protected router: Router) {}
+    
+    constructor(public fb: FormBuilder, protected appSer: AppService, protected router: Router) {}
 
     ngOnInit() {
         this.loginForm = this.fb.group({
-            password: ['', Validators.required],
             email: ['', [Validators.required, CustomValidators.email]]
         });
     }
@@ -29,16 +28,16 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        // this.appSer.login(credentials).subscribe(data => {
-        //     if( data.status !== 200 ){
-        //         alert(data.message);
-        //     } else {
-        //         localStorage.setItem('role', data.admin.role);
-        //         localStorage.setItem('secret_token', data.admin.secretToken);
-        //         this.router.navigate(['']);
-        //     }
-        // }, err => {
-        //     alert(err.message);
-        // });
+        this.appSer.login(credentials).subscribe(data => {
+            if( data.status !== 200 ){
+                alert(data.message);
+            } else {
+                localStorage.setItem('role', data.admin.role);
+                localStorage.setItem('secret_token', data.admin.secretToken);
+                this.router.navigate(['']);
+            }
+        }, err => {
+            alert(err.message);
+        });
     }
 }

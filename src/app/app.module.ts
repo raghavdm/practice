@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ImageCropperModule } from 'ngx-image-cropper';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { Http, HttpModule, RequestOptions } from '@angular/http';
@@ -11,6 +12,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -31,11 +34,14 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     HttpModule,
     BrowserModule,
+    ImageCropperModule,
     ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,

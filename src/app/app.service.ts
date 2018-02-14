@@ -17,7 +17,13 @@ export class AppService implements CanActivate {
     }
 
     login(credentials) {
-        return this.http.post(this.API_URL + 'admin/login', credentials)
+        return this.http.post(this.API_URL + 'user/login', credentials)
+            .map(res => res.json())
+            .catch(err => Observable.throw(err.json()) || 'Server Error');
+    }
+
+    signUp(credentials) {
+        return this.http.post(this.API_URL + 'user/signup', credentials)
             .map(res => res.json())
             .catch(err => Observable.throw(err.json()) || 'Server Error');
     }
