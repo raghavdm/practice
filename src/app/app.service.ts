@@ -13,7 +13,7 @@ export class AppService implements CanActivate {
     private API_URL: String;
 
     constructor(private http: Http, public authHTTP: AuthHttp, private router: Router) {
-        this.API_URL = "environment.API_URL";
+        this.API_URL = environment.API_URL;
     }
 
     login(credentials) {
@@ -23,7 +23,7 @@ export class AppService implements CanActivate {
     }
 
     signUp(credentials) {
-        return this.http.post(this.API_URL + 'user/signup', credentials)
+        return this.http.post(this.API_URL + 'user/create', credentials)
             .map(res => res.json())
             .catch(err => Observable.throw(err.json()) || 'Server Error');
     }

@@ -22,6 +22,7 @@ export class SignUpComponent implements OnInit {
     this.signUpForm = this.fb.group({
       photo: [''],
       dob: ['', Validators.required],
+      // photo: ['', Validators.required],
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       mobile: ['', Validators.required],
@@ -57,6 +58,7 @@ export class SignUpComponent implements OnInit {
         return;
     }
 
+<<<<<<< HEAD
     console.log(credentials);
     console.log(this.croppedImage);
 
@@ -71,6 +73,21 @@ export class SignUpComponent implements OnInit {
     // }, err => {
     //     alert(err.message);
     // });
+=======
+    credentials.photo = this.croppedImage;
+
+    this.appSer.signUp(credentials).subscribe(data => {
+        if( data.status !== 200 ){
+            alert(data.message);
+        } else {
+            localStorage.setItem('role', data.admin.role);
+            localStorage.setItem('secret_token', data.admin.secretToken);
+            this.router.navigate(['']);
+        }
+    }, err => {
+        alert(err.message);
+    });
+>>>>>>> 843608da853a3488b446a7d354991ccb9a411edf
   }
 
 }
