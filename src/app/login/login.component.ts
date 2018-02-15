@@ -32,8 +32,7 @@ export class LoginComponent implements OnInit {
             if( data.status !== 200 ){
                 alert(data.message);
             } else {
-                localStorage.setItem('role', data.admin.role);
-                localStorage.setItem('secret_token', data.admin.secretToken);
+                localStorage.setItem('secret_token', data.token);
                 this.router.navigate(['']);
             }
         }, err => {

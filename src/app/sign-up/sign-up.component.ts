@@ -5,6 +5,8 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 
 import { AppService } from '../app.service';
 
+declare let $: any;
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -12,7 +14,9 @@ import { AppService } from '../app.service';
 })
 export class SignUpComponent implements OnInit {
   public submitted = false;
+  public menuImage = true;
   public signUpForm: FormGroup;
+  public getImageObj: any = [];
   public croppedImage: any = '';
   public imageChangedEvent: any = '';
 
@@ -20,9 +24,8 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     this.signUpForm = this.fb.group({
-      photo: [''],
       dob: ['', Validators.required],
-      // photo: ['', Validators.required],
+      photo: ['', Validators.required],
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       mobile: ['', Validators.required],
@@ -32,20 +35,17 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  getImage(image) {
-    // this.menuImage = false;
-    // this.getImageObj = image.target.files[0];
-    // if(this.getImageObj.type.indexOf('image') == -1) {
-    //   this.getImageObj = [];
-    //   $('.imageError').html('Please upload proper Image.');
-    // }
-    // else {
-    //   $('.imageError').html('Image is required');
-    // }
-  }
-
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
+    this.menuImage = false;
+    this.getImageObj = event.target.files[0];
+    if(this.getImageObj.type.indexOf('image') == -1) {
+       this.getImageObj = [];
+      $('.imageError').html('Please upload proper Image.');
+    }
+    else {
+      $('.imageError').html('Image is required');
+    }
   }
 
   imageCropped(image: string) {
@@ -66,7 +66,7 @@ export class SignUpComponent implements OnInit {
         } else {
             localStorage.setItem('role', data.admin.role);
             localStorage.setItem('secret_token', data.admin.secretToken);
-            this.router.navigate(['']);
+            this.router.navigate(['login']);
         }
     }, err => {
         alert(err.message);

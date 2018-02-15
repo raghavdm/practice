@@ -3,6 +3,7 @@ import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { RouterModule, Routes } from '@angular/router';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BrowserModule } from '@angular/platform-browser';
 import { Http, HttpModule, RequestOptions } from '@angular/http';
 
@@ -41,8 +42,10 @@ const appRoutes: Routes = [
   imports: [
     HttpModule,
     BrowserModule,
+    OwlDateTimeModule, 
     ImageCropperModule,
     ReactiveFormsModule,
+    OwlNativeDateTimeModule,
     RouterModule.forRoot(
       appRoutes,
     )
