@@ -20,8 +20,8 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     this.signUpForm = this.fb.group({
+      photo: [''],
       dob: ['', Validators.required],
-      photo: ['', Validators.required],
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       mobile: ['', Validators.required],
@@ -29,6 +29,18 @@ export class SignUpComponent implements OnInit {
       surname: ['', Validators.required],
       email: ['', [Validators.required, CustomValidators.email]]
     });
+  }
+
+  getImage(image) {
+    // this.menuImage = false;
+    // this.getImageObj = image.target.files[0];
+    // if(this.getImageObj.type.indexOf('image') == -1) {
+    //   this.getImageObj = [];
+    //   $('.imageError').html('Please upload proper Image.');
+    // }
+    // else {
+    //   $('.imageError').html('Image is required');
+    // }
   }
 
   fileChangeEvent(event: any): void {
@@ -45,17 +57,20 @@ export class SignUpComponent implements OnInit {
         return;
     }
 
-    this.appSer.signUp(credentials).subscribe(data => {
-        if( data.status !== 200 ){
-            alert(data.message);
-        } else {
-            localStorage.setItem('role', data.admin.role);
-            localStorage.setItem('secret_token', data.admin.secretToken);
-            this.router.navigate(['']);
-        }
-    }, err => {
-        alert(err.message);
-    });
+    console.log(credentials);
+    console.log(this.croppedImage);
+
+    // this.appSer.signUp(credentials).subscribe(data => {
+    //     if( data.status !== 200 ){
+    //         alert(data.message);
+    //     } else {
+    //         localStorage.setItem('role', data.admin.role);
+    //         localStorage.setItem('secret_token', data.admin.secretToken);
+    //         this.router.navigate(['']);
+    //     }
+    // }, err => {
+    //     alert(err.message);
+    // });
   }
 
 }
