@@ -21,7 +21,7 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
     this.signUpForm = this.fb.group({
       dob: ['', Validators.required],
-      photo: ['', Validators.required],
+      // photo: ['', Validators.required],
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       mobile: ['', Validators.required],
@@ -44,6 +44,8 @@ export class SignUpComponent implements OnInit {
     if (!isValid) {
         return;
     }
+
+    credentials.photo = this.croppedImage;
 
     this.appSer.signUp(credentials).subscribe(data => {
         if( data.status !== 200 ){
