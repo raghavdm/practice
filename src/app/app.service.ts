@@ -16,18 +16,6 @@ export class AppService implements CanActivate {
         this.API_URL = environment.API_URL;
     }
 
-    login(credentials) {
-        return this.http.post(this.API_URL + 'user/login', credentials)
-            .map(res => res.json())
-            .catch(err => Observable.throw(err.json()) || 'Server Error');
-    }
-
-    signUp(credentials) {
-        return this.http.post(this.API_URL + 'user/create', credentials)
-            .map(res => res.json())
-            .catch(err => Observable.throw(err.json()) || 'Server Error');
-    }
-
     canActivate() {
         if (this.check()) {
             return true;
@@ -46,8 +34,8 @@ export class AppService implements CanActivate {
         }
     }
 
-    getUsers() {
-        return this.authHTTP.get(this.API_URL + 'cashier/list')
+    userDetail() {
+        return this.authHTTP.get(this.API_URL + 'case_study/companies/58cba141ba169e0eab2657c9/company_case_studies/595c859eba169ec47e4f20d4/user_company_case_studies/595ce021ba169edb9c733e90?include[company_case_study][include]=questions')
             .map(res => res.json())
             .catch(err => Observable.throw(err) || 'Server Error');
     }

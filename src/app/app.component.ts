@@ -10,5 +10,5 @@ import { AppService } from './app.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(protected appSer: AppService) { }
+  constructor(public appSer: AppService) { }
 }
