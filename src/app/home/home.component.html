@@ -1,71 +1,10 @@
-<!-- <section id="wrapper" class="signup-register">
-  <div class="login-box">
-    <div class="white-box">
-      <h3 class="box-title m-b-20">User Detail</h3>
-      <div class="form-group">
-        <div class="col-xs-12">
-          <label>
-            First Name
-            <p>{{userdata.fname}}</p>
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-xs-12">
-          <label>
-            Last Name
-            <p>{{userdata.lname}}</p>
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-xs-12">
-          <label>
-            Surname
-            <p>{{userdata.surname}}</p>
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-xs-12">
-          <label>
-            Mobile
-            <p>{{userdata.mobile}}</p>
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-xs-12">
-          <label>
-            Email
-            <p>{{userdata.email}}</p>
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-xs-12">
-          <label>
-            Address
-            <p>{{userdata.address}}</p>
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-xs-12">
-          <label>
-            Date of Birth
-            <p>{{userdata.dob | date: 'mediumDate'}}</p>
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-xs-12">
-          <label>
-            Profile Picture
-            <img [src]="userdata.photo" />
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
+<ngx-carousel [inputs]="carouselOne" (carouselLoad)="myfunc($event)">
+  <mat-icon NgxCarouselPrev class='leftRs'>&lt;</mat-icon>
+  <ngx-item NgxCarouselItem *ngFor="let item of userdata; let i = index">
+    <mat-card>
+      <mat-card-title>Question {{ i + 1}}</mat-card-title>
+      <mat-card-content [innerHTML]="item.body"></mat-card-content>
+    </mat-card>
+  </ngx-item>
+  <mat-icon NgxCarouselNext class='rightRs'>&gt;</mat-icon>
+</ngx-carousel>
