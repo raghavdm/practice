@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../..//environments/environment';
 
 import { AppService } from '../app.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +13,21 @@ import { AppService } from '../app.service';
 })
 export class HomeComponent implements OnInit {
   private oauth2;
-  public userdata;
-  public quesNo = 0;
+  public quesNo = 1;
+  public userdata: any= [];
   public dataModel: any = [];
   public carouselOne: NgxCarousel;
 
-  constructor(protected appSer: AppService) {}
+  constructor(protected appSer: AppService, protected route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      if(params.ques != undefined) {
+        this.quesNo = params.ques;
+        var ques = JSON.parse(localStorage.getItem('ques'));
+        this.userdata = ques[this.quesNo - 1];
+        this.dataModel[this.quesNo] = this.dataModel[this.quesNo] == undefined ? '' : this.dataModel[this.quesNo];
+      }
+    });
+  }
 
   ngOnInit() {
     this.carouselOne = {
@@ -57,19 +67,22 @@ export class HomeComponent implements OnInit {
       const accessToken = this.oauth2.accessToken.create(result);
 
       this.appSer.userDetail(accessToken.token.access_token).subscribe(data => {
-        this.userdata = data.user_company_case_study.company_case_study.questions[0];
-        localStorage.setItem('ques', data.user_company_case_study.company_case_study.questions);
-        console.log(this.userdata);
+        if(this.quesNo == 1) {
+          this.userdata = data.user_company_case_study.company_case_study.questions[0];
+        }
+        localStorage.setItem('ques', JSON.stringify(data.user_company_case_study.company_case_study.questions));
       }, err => {
           alert(err.message);
       });
     });
   }
 
-  public myfunc(event: Event) {
-    // carouselLoad will trigger this funnction when your load value reaches
-    // it is helps to load the data by parts to increase the performance of the app
-    // must use feature to all carousel
+  public answer() {
+    var questionId = this.userdata._id.$oid;
+    var answer = this.dataModel[this.quesNo];
+    console.log(questionId, answer);
+
+    //can submit to put request
   }
 
 }

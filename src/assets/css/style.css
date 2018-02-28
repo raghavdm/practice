@@ -8,3 +8,7 @@
   position: absolute;
   top: 15%;
 }
+
+.mce-notification {
+  display: none;
+}
