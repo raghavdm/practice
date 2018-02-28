@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>Question no</mat-card-title>
+  <mat-card-title>Question {{quesNo}}</mat-card-title>
   <mat-card-content [innerHTML]=""></mat-card-content>
-  <!-- <editor [(ngModel)]="dataModel[]"></editor> -->
+  <editor [(ngModel)]="dataModel[quesNo]"></editor>
 </mat-card>

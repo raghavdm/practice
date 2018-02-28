@@ -12,7 +12,8 @@ import { AppService } from '../app.service';
 })
 export class HomeComponent implements OnInit {
   private oauth2;
-  public userdata: any = [];
+  public userdata;
+  public quesNo = 0;
   public dataModel: any = [];
   public carouselOne: NgxCarousel;
 
@@ -56,7 +57,8 @@ export class HomeComponent implements OnInit {
       const accessToken = this.oauth2.accessToken.create(result);
 
       this.appSer.userDetail(accessToken.token.access_token).subscribe(data => {
-        this.userdata = data.user_company_case_study.company_case_study.questions;
+        this.userdata = data.user_company_case_study.company_case_study.questions[0];
+        localStorage.setItem('ques', data.user_company_case_study.company_case_study.questions);
         console.log(this.userdata);
       }, err => {
           alert(err.message);
@@ -64,10 +66,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
-public myfunc(event: Event) {
-   // carouselLoad will trigger this funnction when your load value reaches
-   // it is helps to load the data by parts to increase the performance of the app
-   // must use feature to all carousel
-}
+  public myfunc(event: Event) {
+    // carouselLoad will trigger this funnction when your load value reaches
+    // it is helps to load the data by parts to increase the performance of the app
+    // must use feature to all carousel
+  }
 
 }
