@@ -13,6 +13,7 @@ import { AppService } from '../app.service';
 export class HomeComponent implements OnInit {
   private oauth2;
   public userdata: any = [];
+  public dataModel: any = [];
   public carouselOne: NgxCarousel;
 
   constructor(protected appSer: AppService) {}

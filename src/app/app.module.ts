@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { NgxCarouselModule } from 'ngx-carousel';
-import { MatCardModule, MatIconModule } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { EditorModule } from '@tinymce/tinymce-angular';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatCardModule, MatIconModule } from '@angular/material';
 import { Http, HttpModule, RequestOptions } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppService } from './app.service';
@@ -23,6 +24,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     HttpModule,
+    FormsModule,
+    EditorModule,
     MatCardModule,
     MatIconModule,
     BrowserModule,

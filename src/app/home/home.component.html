@@ -1,10 +1,5 @@
-<ngx-carousel [inputs]="carouselOne" (carouselLoad)="myfunc($event)">
-  <mat-icon NgxCarouselPrev class='leftRs'>&lt;</mat-icon>
-  <ngx-item NgxCarouselItem *ngFor="let item of userdata; let i = index">
-    <mat-card>
-      <mat-card-title>Question {{ i + 1}}</mat-card-title>
-      <mat-card-content [innerHTML]="item.body"></mat-card-content>
-    </mat-card>
-  </ngx-item>
-  <mat-icon NgxCarouselNext class='rightRs'>&gt;</mat-icon>
-</ngx-carousel>
+<mat-card>
+  <mat-card-title>Question no</mat-card-title>
+  <mat-card-content [innerHTML]=""></mat-card-content>
+  <!-- <editor [(ngModel)]="dataModel[]"></editor> -->
+</mat-card>
